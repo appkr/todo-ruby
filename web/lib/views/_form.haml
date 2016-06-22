@@ -1,0 +1,19 @@
+.form-group{class: error_class(task, :name)}
+  %label.col-md-2(for='task_name') Name
+  .col-md-10
+    %input#task_name.form-control(type='text' name='name' placeholder='e.g. Home'){value: task.name}
+
+.form-group{class: error_class(task, :content)}
+  %label.col-md-2(for='task_content') Content
+  .col-md-10
+    %input#task_content.form-control(type='text' name='content' placeholder='e.g. Buy milk'){value: task.content}
+
+- if task.persisted?
+  .form-group{class: error_class(task, :status)}
+    %label.col-md-2(for='task_status') Status
+    .col-md-10
+      %select#task_status.form-control(name='status')
+        -#%option(value='0'){selected: task.status == 0} NOT_YET
+        -#%option(value='1'){selected: task.status == 1} DONE
+        -#%option(value='2'){selected: task.status == 2} PENDING
+        != options_for_task_status(task)

@@ -1,0 +1,11 @@
+%h1.page-header
+  New Task
+
+!= haml :_errors, locals: {task: @task}
+
+%form.form-horizontal(method='post' action='/tasks')
+  != haml :_form, locals: {task: @task}
+
+  .form-group
+    .col-md-offset-2.col-md-10
+      %button.btn.btn-primary(type='submit' name='submit') Create

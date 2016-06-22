@@ -1,0 +1,14 @@
+%h1.page-header
+  Editing Task
+
+!= haml :_errors, locals: {task: @task}
+
+%form.form-horizontal(method='post'){action: "/tasks/#{@task.id}"}
+
+  %input(name='_method' type='hidden' value='put')
+
+  != haml :_form, locals: {task: @task}
+
+  .form-group
+    .col-md-offset-2.col-md-10
+      %button.btn.btn-primary(type='submit' name='submit') Update
